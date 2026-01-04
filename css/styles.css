@@ -1,0 +1,451 @@
+/* style.css - Réplica exacta de colores IBM i */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', 'Monaco', monospace;
+    background-color: #000;
+    color: #00FF00; /* Verde brillante AS/400 */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Pantalla completa IBM i */
+.ibm-screen {
+    width: 1024px;
+    height: 768px;
+    background-color: #000;
+    border: 2px solid #555;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.1);
+}
+
+/* Cabecera del sistema */
+.system-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #333;
+    margin-bottom: 10px;
+}
+
+.sys-name {
+    font-size: 12px;
+}
+
+.sys-label {
+    color: #00AA00; /* Verde más oscuro para etiquetas */
+    margin-right: 5px;
+}
+
+.sys-value {
+    color: #00FF00; /* Verde brillante para valores */
+    font-weight: bold;
+}
+
+.user-info {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.user-letter {
+    color: #FF6600; /* Ámbar/naranja para la letra de usuario */
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Título de pantalla */
+.screen-title {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.title-main {
+    font-size: 16px;
+    font-weight: bold;
+    color: #00FF00;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.title-sub {
+    font-size: 12px;
+    color: #00AA00;
+    font-style: italic;
+}
+
+/* Menú principal */
+.main-menu {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    min-height: 250px;
+}
+
+.menu-column {
+    width: 48%;
+}
+
+.menu-item {
+    display: flex;
+    margin-bottom: 6px;
+    align-items: flex-start;
+}
+
+.menu-number {
+    color: #FFFF00; /* Amarillo para números de opción */
+    width: 30px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.menu-text {
+    color: #00FF00; /* Verde para texto de opciones */
+    font-size: 13px;
+    flex: 1;
+}
+
+.menu-text:hover {
+    color: #FFFFFF; /* Blanco al pasar mouse */
+    background-color: #003300;
+    cursor: pointer;
+}
+
+/* Línea separadora */
+.separator-line {
+    color: #00AA00; /* Verde medio */
+    font-size: 13px;
+    text-align: center;
+    margin: 10px 0;
+    letter-spacing: 1px;
+}
+
+/* Opción de salida */
+.exit-option {
+    margin: 10px 0 20px 0;
+}
+
+.exit-option .menu-number {
+    color: #FF6600; /* Naranja para la opción 90 */
+}
+
+.exit-option .menu-text {
+    color: #FF6600;
+    font-weight: bold;
+}
+
+/* Entrada de comando */
+.command-entry {
+    margin: 20px 0;
+    background-color: #001100;
+    padding: 10px;
+    border: 1px solid #003300;
+}
+
+.command-prompt {
+    display: flex;
+    align-items: center;
+}
+
+.prompt-label {
+    color: #00AA00;
+    font-size: 13px;
+    width: 180px;
+}
+
+.input-area {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    background-color: #000;
+    border: none;
+}
+
+.prompt-arrow {
+    color: #FFFF00; /* Amarillo para ===> */
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 13px;
+}
+
+.command-input {
+    background-color: #000;
+    color: #00FF00;
+    border: none;
+    outline: none;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    width: 300px;
+    padding: 2px 5px;
+}
+
+.command-input:focus {
+    background-color: #002200;
+}
+
+.input-cursor {
+    color: #00FF00;
+    animation: blink 1s infinite;
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Barra de funciones F-keys */
+.function-bar {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+    background-color: #002200;
+    border-top: 1px solid #004400;
+    border-bottom: 1px solid #004400;
+}
+
+.fkey-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+}
+
+.fkey {
+    color: #00AA00;
+    font-size: 11px;
+}
+
+.fkey:hover {
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+/* Pie de página del sistema */
+.system-footer {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.page-number {
+    color: #00AA00;
+    font-size: 11px;
+}
+
+/* Ventanas emergentes (popup) estilo AS/400 */
+.popup-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    background-color: #001100;
+    border: 2px solid #00AA00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    z-index: 1000;
+    display: none;
+}
+
+.window-header {
+    background-color: #003300;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #00AA00;
+}
+
+.window-title {
+    color: #FFFF00; /* Amarillo para título de ventana */
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.window-close {
+    background-color: #660000;
+    color: #FF6600;
+    border: 1px solid #AA0000;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.window-close:hover {
+    background-color: #AA0000;
+    color: #FFFFFF;
+}
+
+.window-content {
+    padding: 15px;
+}
+
+/* Campos de entrada en ventanas */
+.field-group {
+    margin-bottom: 20px;
+}
+
+.field-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.field-label {
+    color: #00AA00;
+    font-size: 12px;
+    width: 250px;
+}
+
+.field-input {
+    background-color: #000;
+    color: #00FF00;
+    border: 1px solid #004400;
+    padding: 3px 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    flex: 1;
+}
+
+.field-input:focus {
+    border-color: #00FF00;
+    outline: none;
+}
+
+.field-select {
+    background-color: #000;
+    color: #00FF00;
+    border: 1px solid #004400;
+    padding: 3px 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    flex: 1;
+}
+
+/* Botones de acción */
+.window-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.action-btn {
+    padding: 5px 15px;
+    border: 1px solid #004400;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.action-btn.primary {
+    background-color: #003300;
+    color: #00FF00;
+}
+
+.action-btn.primary:hover {
+    background-color: #004400;
+    border-color: #00FF00;
+}
+
+.action-btn.secondary {
+    background-color: #220000;
+    color: #FF6600;
+}
+
+.action-btn.secondary:hover {
+    background-color: #440000;
+    border-color: #FF6600;
+}
+
+/* Contenedor de mensajes */
+.messages-container {
+    background-color: #000;
+    border: 1px solid #004400;
+}
+
+.messages-header {
+    display: grid;
+    grid-template-columns: 100px 100px 150px 1fr;
+    background-color: #003300;
+    padding: 5px;
+    border-bottom: 1px solid #00AA00;
+}
+
+.msg-col {
+    color: #FFFF00;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.messages-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.message-row {
+    display: grid;
+    grid-template-columns: 100px 100px 150px 1fr;
+    padding: 4px 5px;
+    border-bottom: 1px solid #002200;
+    font-size: 11px;
+}
+
+.message-row:nth-child(even) {
+    background-color: #001100;
+}
+
+.message-row:hover {
+    background-color: #003300;
+}
+
+/* Scrollbar estilo AS/400 */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #001100;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #003300;
+    border: 1px solid #00AA00;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #004400;
+}
+
+/* Efectos de selección */
+::selection {
+    background-color: #00AA00;
+    color: #000;
+}
+
+/* Clase para overlay de fondo */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    display: none;
+}

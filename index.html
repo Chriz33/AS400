@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBM i Series - Sistema de Mensajes</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="as400-terminal">
+    <!-- Pantalla completa IBM i -->
+    <div class="ibm-screen">
+        <!-- Cabecera del sistema -->
+        <div class="system-header">
+            <div class="sys-name">
+                <span class="sys-label">Sistema:</span>
+                <span class="sys-value">ISERIES</span>
+            </div>
+            <div class="user-info">
+                <span>Mi</span>
+                <span class="user-letter">A</span>
+            </div>
+        </div>
+
+        <!-- Título de la pantalla -->
+        <div class="screen-title">
+            <div class="title-main">Menú principal de IBM i</div>
+            <div class="title-sub">Seleccione una de las opciones siguientes:</div>
+        </div>
+
+        <!-- Menú de opciones -->
+        <div class="main-menu">
+            <!-- Columna izquierda -->
+            <div class="menu-column">
+                <div class="menu-item">
+                    <span class="menu-number">1.</span>
+                    <span class="menu-text">Tareas de usuario</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-number">2.</span>
+                    <span class="menu-text">Tareas de oficina</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-number">3.</span>
+                    <span class="menu-text">Tareas generales del sistema</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-number">4.</span>
+                    <span class="menu-text">Archivos, bibliotecas y carpetas</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-number">5.</span>
+                    <span class="menu-text">Programación</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-number">6.</span>
+                    <span class="menu-text">Comunicaciones</span>
+                </div>
+            </div>
+
+            <!-- Columna derecha -->
+            <div class="menu-column">
+                <div class="menu-item">
+                    <span class="menu-number">7.</span>
+                    <span class="menu-text">Definir o cambiar el sistema</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-number">8.</span>
+                    <span class="menu-text">Manejo de problemas</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-number">9.</span>
+                    <span class="menu-text">Visualizar un menú</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-number">10.</span>
+                    <span class="menu-text">Opciones de Information Assistant</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-number">11.</span>
+                    <span class="menu-text">Tareas de IBM i Access</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Línea separadora -->
+        <div class="separator-line">-------------------------------------------------------------------</div>
+
+        <!-- Opción de salida -->
+        <div class="exit-option">
+            <div class="menu-item">
+                <span class="menu-number">90.</span>
+                <span class="menu-text">Finalizar la sesión</span>
+            </div>
+        </div>
+
+        <!-- Entrada de comando -->
+        <div class="command-entry">
+            <div class="command-prompt">
+                <span class="prompt-label">Selección o mandato</span>
+                <div class="input-area">
+                    <span class="prompt-arrow">===></span>
+                    <input type="text" id="command-input" class="command-input" 
+                           autocomplete="off" spellcheck="false" 
+                           placeholder="urkusrprf_" value="urkusrprf_">
+                    <span class="input-cursor">█</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de función F-keys -->
+        <div class="function-bar">
+            <div class="fkey-row">
+                <span class="fkey">F3=Salir</span>
+                <span class="fkey">F4=Solicitud</span>
+                <span class="fkey">F9=Recuperar</span>
+                <span class="fkey">F12=Cancelar</span>
+            </div>
+            <div class="fkey-row">
+                <span class="fkey">F13=Information Assistant</span>
+                <span class="fkey">F23=Establecer menú inicial</span>
+            </div>
+        </div>
+
+        <!-- Información del sistema al pie -->
+        <div class="system-footer">
+            <div class="page-info">
+                <span class="page-number">20/016</span>
+            </div>
+        </div>
+
+        <!-- Ventana de SNDMSG (oculta inicialmente) -->
+        <div id="sndmsg-window" class="popup-window">
+            <div class="window-header">
+                <span class="window-title">Enviar Mensaje (SNDMSG)</span>
+                <button class="window-close" onclick="closeSNDMSG()">X</button>
+            </div>
+            
+            <div class="window-content">
+                <div class="field-group">
+                    <div class="field-row">
+                        <span class="field-label">Mensaje . . . . . . . . . . . . . . . . . . . . . . . .</span>
+                        <input type="text" id="sndmsg-text" class="field-input" maxlength="70">
+                    </div>
+                    
+                    <div class="field-row">
+                        <span class="field-label">A usuario . . . . . . . . . . . . . . . . . . . . . .</span>
+                        <input type="text" id="sndmsg-to" class="field-input" value="*ALL">
+                    </div>
+                    
+                    <div class="field-row">
+                        <span class="field-label">Tipo de mensaje . . . . . . . . . . . . . . . . . .</span>
+                        <select id="sndmsg-type" class="field-select">
+                            <option value="*INFO">*INFO Informativo</option>
+                            <option value="*INQ">*INQ De consulta</option>
+                            <option value="*NOTIFY">*NOTIFY Notificación</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="window-actions">
+                    <button class="action-btn primary" onclick="sendMessage()">Enviar</button>
+                    <button class="action-btn secondary" onclick="closeSNDMSG()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ventana de cola de mensajes -->
+        <div id="dspmsg-window" class="popup-window">
+            <div class="window-header">
+                <span class="window-title">Mostrar Mensajes (DSPMSG)</span>
+                <button class="window-close" onclick="closeDSPMSG()">X</button>
+            </div>
+            
+            <div class="window-content">
+                <div class="messages-container">
+                    <div class="messages-header">
+                        <span class="msg-col from">De</span>
+                        <span class="msg-col to">Para</span>
+                        <span class="msg-col time">Fecha/Hora</span>
+                        <span class="msg-col text">Mensaje</span>
+                    </div>
+                    <div id="messages-list" class="messages-list">
+                        <!-- Mensajes cargados dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
